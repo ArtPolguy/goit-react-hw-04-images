@@ -42,8 +42,8 @@ export const App = () => {
     setPage(1);
   };
 
-  const showModalImg = ({ largeImageURL, tags }) => {
-    setModalDetails({ largeImageURL, tags });
+  const showModalImg = ({ largeImageURL, alt }) => {
+    setModalDetails({ largeImageURL, alt });
     setShowModal(true);
   };
   const loadMore = () => {
@@ -58,7 +58,9 @@ export const App = () => {
   return (
     <div className={css.app}>
       <Searchbar onSubmit={searchImage} />
-      <ImageGallery images={images} showModalImg={showModalImg} />
+      {Boolean(images.length) && (
+        <ImageGallery images={images} showModalImg={showModalImg} />
+      )}
       {loading && (
         <Watch wrapperStyle={{ display: 'flex', justifyContent: 'center' }} />
       )}
