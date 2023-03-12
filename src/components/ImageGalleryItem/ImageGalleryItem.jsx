@@ -1,5 +1,6 @@
 import css from './ImageGalleryItem.module.css';
 import PropTypes from 'prop-types';
+import { memo } from 'react';
 
 const ImgGalleryItem = ({ largeImageURL, onClick, url, alt }) => {
   return (
@@ -14,7 +15,7 @@ const ImgGalleryItem = ({ largeImageURL, onClick, url, alt }) => {
   );
 };
 
-export default ImgGalleryItem;
+export default memo(ImgGalleryItem);
 
 ImgGalleryItem.propTypes = {
   alt: PropTypes.string.isRequired,

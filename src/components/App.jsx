@@ -5,7 +5,7 @@ import Modal from 'shared/components/Modals/Modal';
 import ModalImg from './Modal/ModalImg';
 
 import { Watch } from 'react-loader-spinner';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import css from './App.module.css';
 import { searchImg } from 'shared/api/img-api';
 
@@ -36,17 +36,19 @@ export const App = () => {
     }
   }, [search, page, setLoading, setImages, setError, error]);
 
-  const searchImage = ({ search }) => {
+  const searchImage = useCallback(({ search }) => {
     setSearch(search);
     setImages([]);
     setPage(1);
-  };
+  }, []);
 
-  const showModalImg = ({ largeImageURL, alt }) => {
+  const showModalImg = useCallback(({ largeImageURL, alt }) => {
     setModalDetails({ largeImageURL, alt });
     setShowModal(true);
-  };
+  }, []);
+
   const loadMore = () => {
+    console.log('load more');
     setPage(prevPage => prevPage + 1);
   };
 

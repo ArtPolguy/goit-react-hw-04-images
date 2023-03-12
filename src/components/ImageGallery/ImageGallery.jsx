@@ -1,6 +1,7 @@
 import ImgGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 import css from './ImageGallery.module.css';
 import PropTypes from 'prop-types';
+import { memo } from 'react';
 
 const ImageGallery = ({ images, showModalImg }) => {
   const items = images.map(({ id, webformatURL, tags, largeImageURL }) => (
@@ -15,7 +16,7 @@ const ImageGallery = ({ images, showModalImg }) => {
   return <ul className={css.imageGallery}>{items}</ul>;
 };
 
-export default ImageGallery;
+export default memo(ImageGallery);
 
 ImageGallery.defaultProps = {
   images: [],

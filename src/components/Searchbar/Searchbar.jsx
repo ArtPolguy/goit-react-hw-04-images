@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import css from './Searchbar.module.css';
 import PropTypes from 'prop-types';
@@ -42,7 +42,7 @@ const Searchbar = ({ onSubmit }) => {
   );
 };
 
-export default Searchbar;
+export default memo(Searchbar);
 
 Searchbar.propTypes = {
   onSubmit: PropTypes.func.isRequired,
